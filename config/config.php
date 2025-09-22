@@ -1,0 +1,10 @@
+<?php
+	/*define("DB_HOST","mariadb");
+	define("DB_USER","evaDocTESOEM");
+	define("DB_PASSWORD","@@evaDocTESOEM#1@@");
+	define("DB_DATABASE","evaluaciondocente");*/
+	define("DB_HOST","localhost");
+	define("DB_USER","evaDocTESOEM");
+	define("DB_PASSWORD","@@evaDocTESOEM#1@@");
+	define("DB_DATABASE","evaluaciondocenteM");
+?>
