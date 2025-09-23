@@ -3,7 +3,7 @@ session_start();
 
 if (isset($_POST['matricula'])){
 	$matriii = $_POST['matricula'];
-	echo var_dump($matriii);
+	//echo var_dump($matriii);
 	 if ($matriii == '') {
 		echo "<script>alert('error! no hay valores!')</script>";
 	}
