@@ -12,6 +12,20 @@ class Consultas
         $this->miconexion = $this->miconexion->AbrirConexion();
     }
 
+    public function CargarPeriodo()
+    {
+        $sql = 'SELECT periodo FROM Periodo WHERE activo="A"';
+        $consulta = $this->miconexion->prepare($sql);
+        $consulta->execute();
+        $registro = $consulta->fetch(PDO::FETCH_ASSOC);
+
+        if ($registro) {
+            return (string)$registro['periodo'];
+        } else {
+            return ''; // o null
+        }
+    }
+
     public function CargaPreguntas()
     {
         $sql = 'SELECT numP, preg FROM pregunta';

@@ -1,0 +1,4 @@
+DELETE FROM evaluaciondocente.profesorencuesta;
+DELETE FROM evaluaciondocente.encuesta;
+DELETE FROM evaluaciondocente.encuestapregunta;
+DELETE FROM evaluaciondocente.pregunta;

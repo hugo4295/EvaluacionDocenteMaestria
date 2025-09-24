@@ -107,7 +107,7 @@ $consulta->cerrar();
                  $promedios = $consulta->seccionpromedio($claveprof);
                  foreach($promedios as $promedio){
                     if ($promedio["seccion"] == 1){
-                        $texto='A) Dominio de la asignatura';
+                        $texto='A) Planeación del Curso';
                         $prom=number_format($promedio["promedio"],2,'.','');
                         $arrecal['A']=$prom;
                         $evafinal+=$prom;
@@ -115,7 +115,7 @@ $consulta->cerrar();
                         $aeva[$letra]=$texto;
                     }
                     elseif ($promedio["seccion"] == 2){
-                        $texto='B) Planificación de curso';
+                        $texto='B) Aprendizaje significativo';
                         $prom=number_format($promedio["promedio"],2,'.','');
                         $arrecal['B']=$prom;
                         $evafinal+=$prom;
@@ -123,7 +123,7 @@ $consulta->cerrar();
                         $aeva[$letra]=$texto;
                     }
                     elseif ($promedio["seccion"] == 3){
-                        $texto='C) Ambientes de aprendizaje';
+                        $texto='C) Dominio de la materia';
                         $prom=number_format($promedio["promedio"],2,'.','');
                         $arrecal['C']=$prom;
                         $evafinal+=$prom;
@@ -131,7 +131,7 @@ $consulta->cerrar();
                         $aeva[$letra]=$texto;
                     }
                     elseif ($promedio["seccion"] == 4){
-                        $texto='D) Estategias, métodos y técnicas';
+                        $texto='D) Ética y desarrollo sustentable';
                         $prom=number_format($promedio["promedio"],2,'.','');
                         $arrecal['D']=$prom;
                         $evafinal+=$prom;
@@ -139,7 +139,7 @@ $consulta->cerrar();
                         $aeva[$letra]=$texto;
                     }
                     elseif ($promedio["seccion"] == 5){
-                        $texto='E) Motivación';
+                        $texto='E) Evaluación';
                         $prom=number_format($promedio["promedio"],2,'.','');
                         $arrecal['E']=$prom;
                         $evafinal+=$prom;

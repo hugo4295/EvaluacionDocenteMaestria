@@ -10,7 +10,7 @@ $gruppp = $_SESSION['grup'];
 $consulta = new Consultasr();
 $Preguntas = $consulta->CargaPreguntas();
 $infogrupo = $consulta->Cargargpm($gruppp);
-
+$periodoactual = $consulta->CargarPeriodo();
 $consulta->cerrar();
 $restotalprof = 0;
 foreach($infogrupo as $dato){
@@ -21,7 +21,7 @@ foreach($infogrupo as $dato){
 /*foreach($infogrupo as $igpo){
     echo $igpo->nombre.",".$igpo->Materia.",".$igpo->claveProf.",".$igpo->idG."<br>";
 }*/
-$periodoactual = "2025-1";
+//$periodoactual = "2025-1";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +30,7 @@ $periodoactual = "2025-1";
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css/clasetablas.css">
 <link rel="stylesheet" href="../css/bootstrap.min.css">
-  <title>Tabla con Desplazamiento</title>
+  <title>Evaluacion Docente</title>
 </head>
 <body>
    <div class="image-section">
@@ -47,7 +47,7 @@ $periodoactual = "2025-1";
     </div>
     <div style="text-align: center;">
             <h1>INSTRUMENTO DE EVALUACIÓN AL DESEMPEÑO DOCENTE</h1>
-            <h3>SEMESTRE 2025-1</h3>
+            <h3>SEMESTRE <?= $periodoactual; ?></h3>
             </div>
  
     <p style="text-size: 25px;">
@@ -89,10 +89,13 @@ $periodoactual = "2025-1";
                     echo'<tr>
                           <td>'.$pregunta["numP"].' ¿'.mb_convert_encoding($pregunta["preg"],"UTF-8", "ISO-8859-1").'?</td>';
                           for ($i=1;$i<=$restotalprof;$i++){
-                            echo '<td><input type="numeric" name="p'.$fila.''.$i.'" pattern="[1-5]" placeholder= "1-5" required="required"> </td>';  
+                            if ($fila==26)
+                              echo '<td><input type="text" name="p0'.$fila.''.$i.'"  placeholder= "sugerencia" required="required"> </td>';  
+                            else
+                              echo '<td><input type="numeric" name="p'.$fila.''.$i.'" pattern="[1-5]" placeholder= "1-5" required="required"> </td>';  
                         }
-                echo '</tr>';
-                          $fila++;
+                    echo '</tr>';
+                    $fila++;
                 }             
                 ?>
           </tbody>
