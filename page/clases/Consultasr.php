@@ -34,6 +34,9 @@ class Consultasr
     // se insertan los datos se genera de los arreglos para poder obtener los datos en forma masiva
     // se insertan los elementos y obtenermos los id de control
     // se realizan el inicio de transaccion y se insertan los datos
+    //
+    // Los datos de la pregunta 26 (Comentarios para el profesor) no se insertan, y desde la $post no
+    // los jala adecuadamente
     public function RegistrarResultado(array $post, $matricula)
     {
         $periodo = $post["periodo"];
@@ -60,20 +63,22 @@ class Consultasr
         $E=[];
         $PE=[];
         for ($i = 1; $i <= $totalprofesores; $i++) {
-            for ($p = 1; $p <= 48; $p++) {
+            for ($p = 1; $p <= 26; $p++) { // Establece numero de preguntas manualmente
                 $Pr = "p" . $p . $i;
                 $pe = $post[$Pr];
-                $EP[]=[$idregistrado[$i-1],$p,$pe];
+                $EP[]=[$idregistrado[$i-1],$p,$pe]; // Los datos de p26 no se insertan.
             }
             $E[]=[$idregistrado[$i-1],$periodo];
             $PE[]=[$cveprofesor[$i-1],$idregistrado[$i-1]];
         }
 
+        print_r($E);
         $VEP="insert into encuestapregunta(idE, numP, evaluacion) values (".$EP[0][0].",".$EP[0][1].",".$EP[0][2].")";
-
         foreach ($EP as $key => $value) {
-            if ($key > 0) {
+            if ($key > 0 && $key=!26) {
                 $VEP.=","."(".$value[0].",".$value[1].",".$value[2].")";
+            }else if ($key > 0 && $key == 26){
+                $VEC="insert into encuestapregunta(idE, numP, comentario) values (".$value[0].",".$value[1].",'".$value[2]."')"; // Error generado por realizar insercion aqui. Deberia ser despues
             }
         }
         $VE="insert into encuesta(idE, periodo) values (".$E[0][0].",".$E[0][1].")";

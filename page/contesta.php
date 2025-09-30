@@ -21,7 +21,7 @@ foreach($infogrupo as $dato){
 /*foreach($infogrupo as $igpo){
     echo $igpo->nombre.",".$igpo->Materia.",".$igpo->claveProf.",".$igpo->idG."<br>";
 }*/
-$periodoactual = "2025-1";
+$periodoactual = "2025-2";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -89,7 +89,11 @@ $periodoactual = "2025-1";
                     echo'<tr>
                           <td>'.$pregunta["numP"].' ¿'.mb_convert_encoding($pregunta["preg"],"UTF-8", "ISO-8859-1").'?</td>';
                           for ($i=1;$i<=$restotalprof;$i++){
-                            echo '<td><input type="numeric" name="p'.$fila.''.$i.'" pattern="[1-5]" placeholder= "1-5" required="required"> </td>';  
+                            if ($pregunta["numP"]==26){
+                            echo '<td><input type="text" name="p'.$fila.''.$i.'" placeholder="Escriba un comentario" required="required"> </td>';
+                            }else{
+                            echo '<td><input type="numeric" name="p'.$fila.''.$i.'" pattern="[1-5]" placeholder= "1-5" required="required"> </td>';
+                            }
                         }
                 echo '</tr>';
                           $fila++;
