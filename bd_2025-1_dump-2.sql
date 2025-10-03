@@ -165,6 +165,24 @@ INSERT INTO `encuestadogrupo` VALUES ('20141360','MAESII-IV','M'),('248020001','
 /*!40000 ALTER TABLE `encuestadogrupo` ENABLE KEYS */;
 UNLOCK TABLES;
 
+---
+--- Estructura generada manualmente para tabla `encuestacomentario`
+---
+
+DROP TABLE IF EXISTS `encuestacomentario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `encuestacomentario`(
+  `idE` int NOT NULL DEFAULT '0',
+  `comentario` varchar(240) DEFAULT NULL,
+  CONSTRAINT `encuestacomentario_idefk` FOREIGN KEY (`idE`) REFERENCES `encuestapregunta`(`idE`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+---
+--- Fin estrictura `encuestacomentario`
+---
+
 --
 -- Table structure for table `encuestapregunta`
 --
@@ -176,7 +194,6 @@ CREATE TABLE `encuestapregunta` (
   `idE` int NOT NULL DEFAULT '0',
   `numP` int NOT NULL DEFAULT '0',
   `evaluacion` int DEFAULT NULL,
-  `comentario` varchar(240) DEFAULT NULL,
   PRIMARY KEY (`idE`,`numP`),
   KEY `numP` (`numP`),
   CONSTRAINT `encuestapregunta_ibfk_2` FOREIGN KEY (`numP`) REFERENCES `pregunta` (`numP`)
@@ -432,6 +449,7 @@ CREATE TABLE `profesorencuesta` (
   CONSTRAINT `profesorencuestaFKEncuestaconteo` FOREIGN KEY (`idE`) REFERENCES `encuestaconteo` (`idE`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
 
 --
 -- Dumping data for table `profesorencuesta`

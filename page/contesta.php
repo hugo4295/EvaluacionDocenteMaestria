@@ -21,7 +21,7 @@ foreach($infogrupo as $dato){
 /*foreach($infogrupo as $igpo){
     echo $igpo->nombre.",".$igpo->Materia.",".$igpo->claveProf.",".$igpo->idG."<br>";
 }*/
-$periodoactual = "2025-2";
+$periodoactual = "2033";
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -72,13 +72,14 @@ class Consultasr
             $PE[]=[$cveprofesor[$i-1],$idregistrado[$i-1]];
         }
 
-        print_r($E);
         $VEP="insert into encuestapregunta(idE, numP, evaluacion) values (".$EP[0][0].",".$EP[0][1].",".$EP[0][2].")";
+        $VEC="insert into encuestacomentario(idE,comentario) values(".$EP[0][0].",NULL)";
         foreach ($EP as $key => $value) {
-            if ($key > 0 && $key=!26) {
+            if($key==0)continue;
+            if($value[1]==26){
+                $VEC.=","."(".$value[0].",'".$value[2]."')";
+            }else{
                 $VEP.=","."(".$value[0].",".$value[1].",".$value[2].")";
-            }else if ($key > 0 && $key == 26){
-                $VEC="insert into encuestapregunta(idE, numP, comentario) values (".$value[0].",".$value[1].",'".$value[2]."')"; // Error generado por realizar insercion aqui. Deberia ser despues
             }
         }
         $VE="insert into encuesta(idE, periodo) values (".$E[0][0].",".$E[0][1].")";
@@ -98,6 +99,7 @@ class Consultasr
             $this->miconexion->exec($VEP);
             $this->miconexion->exec($VE);
             $this->miconexion->exec($VPE);
+            $this->miconexion->exec($VEC);
             $this->miconexion->commit();
         } catch (Exception $e) {
             $this->miconexion->rollBack();
