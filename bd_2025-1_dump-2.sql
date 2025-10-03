@@ -169,14 +169,11 @@ UNLOCK TABLES;
 --- Estructura generada manualmente para tabla `encuestacomentario`
 ---
 
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `encuestacomentario`(
   `idE` int NOT NULL DEFAULT '0',
   `comentario` varchar(240) DEFAULT NULL,
   CONSTRAINT `encuestacomentario_idefk` FOREIGN KEY (`idE`) REFERENCES `encuestapregunta`(`idE`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 ---
 --- Fin estrictura `encuestacomentario`
